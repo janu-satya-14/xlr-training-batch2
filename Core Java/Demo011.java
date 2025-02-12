@@ -1,21 +1,56 @@
-// wap to create inheritance - class name Parent and Sub Class name Child
+import java.util.Scanner;
 public class Demo011 {
-    public static void main(String[] args) {        
-        Parent pobj = new Parent();
-        pobj.parentDetails();
-        Child cobj = new Child();
-        cobj.childDetails();
+        protected String name;
+        protected int age;
+        protected String email;
+    
+        public void acceptDetails() {
+            Scanner scanner = new Scanner(System.in);
+    
+            System.out.print("Enter your name: ");
+            name = scanner.nextLine();
+    
+            System.out.print("Enter your age: ");
+            age = scanner.nextInt();
+            scanner.nextLine();
+    
+            System.out.print("Enter your email: ");
+            email = scanner.nextLine();
         }
-}
-class Parent{
-    public String Name = "Hitler";
-    void parentDetails(){
-        System.out.println("parents name is "+ Name);
+    
+        public void displayDetails() {
+            System.out.println("\nDetails:");
+            System.out.println("Name: " + name);
+            System.out.println("Age: " + age);
+            System.out.println("Email: " + email);
+        }
     }
-}
-class Child extends Parent{
-    String Son = "Jean Marie";
-    void childDetails(){
-        System.out.println("Sons full name is "+super.Name+". "+Son);
+
+    class Student extends Demo011 {
+        private String studentId;
+        private String course;
+    
+        public void acceptDetails() {
+            super.acceptDetails();
+            Scanner scanner = new Scanner(System.in);
+    
+            System.out.print("Enter your student ID: ");
+            studentId = scanner.nextLine();
+    
+            System.out.print("Enter your course: ");
+            course = scanner.nextLine();
+        }
+    
+        public void displayDetails() {
+            super.displayDetails();
+            System.out.println("Student ID: " + studentId);
+            System.out.println("Course: " + course);
+        }
+    
+        public static void main(String[] args) {
+            Student student = new Student();
+            student.acceptDetails();
+            student.displayDetails();
+        }
     }
-}
+    
